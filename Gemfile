@@ -35,7 +35,6 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.7'
-  gem 'rails-controller-testing', '~>1.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'simplecov', '~> 0.16.1', require: false
 end
