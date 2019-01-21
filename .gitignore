@@ -22,7 +22,7 @@
 
 /public/assets
 /coverage
-/spec/example.txt
+/spec/examples.txt
 .byebug_history
 .DS_Store
 .env
