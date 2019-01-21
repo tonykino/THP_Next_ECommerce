@@ -21,7 +21,7 @@ Rails/Output:
 Layout/IndentationConsistency:
   EnforcedStyle: rails
 
-Style/Datetime:
+Style/DateTime:
   Enabled: true
 
 Metrics/LineLength:
