@@ -1,5 +1,11 @@
 <div class="container">
   <h1>Hello world !</h1>
 
-  <%= link_to 'Test bootstrap', '#', class: 'btn btn-primary' %>
+  <% if current_user %>
+    <%= link_to 'Accéder au profil', edit_user_registration_path, class: 'btn btn-info' %>
+    <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'Se connecter', new_user_session_path, class: 'btn btn-success' %>
+    <%= link_to "S'inscrire", new_user_registration_path, class: 'btn btn-primary' %>
+  <% end %>
 </div>
