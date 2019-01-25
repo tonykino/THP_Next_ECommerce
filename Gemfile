@@ -8,6 +8,7 @@ File.read('./.ruby-version')
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.2.1'
 gem 'coffee-rails', '~> 4.2'
+gem 'devise'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -16,7 +17,6 @@ gem 'rails', '~> 5.2.2'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'devise'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
