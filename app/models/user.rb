@@ -24,6 +24,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  has_one :profile, dependent: :destroy
   validates :email, :password, presence: true
   validates :password, length: { minimum: 6 }
 
