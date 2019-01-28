@@ -12,6 +12,7 @@ RSpec.describe Profile, type: :model do
   end
 
   describe 'validations' do
+    it { is_expected.to belong_to(:user) }
     it { is_expected.to validate_presence_of(:first_name) }
     it { is_expected. to validate_length_of(:first_name).is_at_least(2).is_at_most(100) }
     it { is_expected.to validate_presence_of(:last_name) }
@@ -19,8 +20,6 @@ RSpec.describe Profile, type: :model do
     it { is_expected.to validate_presence_of(:phone_number) }
   end
 
-  let(:profile) { create(:profile) }
-  it { is_expected.to belong_to(:user) }
   it 'is creatable' do
     expect{ create(:profile) }.to change(Profile, :count).by(1)
   end
