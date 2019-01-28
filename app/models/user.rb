@@ -25,6 +25,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
+  has_one :adress, dependent: :destroy
+  accepts_nested_attributes_for :adress
   validates :email, :password, presence: true
   validates :password, length: { minimum: 6 }
 
