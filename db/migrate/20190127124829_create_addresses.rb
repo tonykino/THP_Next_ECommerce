@@ -8,8 +8,8 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :locality
       t.string :administrative_area_level_1
       t.string :country
-      t.integer :postal_code
-      t.string :full_address
+      t.string :postal_code
+      t.text :full_address
       t.references :user, foreign_key: true
 
       t.timestamps

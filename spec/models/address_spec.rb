@@ -2,7 +2,7 @@
 
 # == Schema Information
 #
-# Table name: adresses
+# Table name: addresses
 #
 #  id                          :bigint(8)        not null, primary key
 #  street_number               :integer
@@ -10,8 +10,8 @@
 #  locality                    :string
 #  administrative_area_level_1 :string
 #  country                     :string
-#  postal_code                 :string
-#  full_address                :text
+#  postal_code                 :integer
+#  full_address                :string
 #  user_id                     :bigint(8)
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
@@ -19,8 +19,8 @@
 
 require 'rails_helper'
 
-RSpec.describe Adress, type: :model do
-  describe 'Adress Database' do
+RSpec.describe Address, type: :model do
+  describe 'Address Database' do
     it { is_expected.to have_db_column(:street_number).of_type(:integer) }
     it { is_expected.to have_db_column(:route).of_type(:string) }
     it { is_expected.to have_db_column(:locality).of_type(:string) }
@@ -38,6 +38,6 @@ RSpec.describe Adress, type: :model do
   end
 
   it 'is creatable' do
-    expect{ create(:adress) }.to change(Adress, :count).by(1)
+    expect{ create(:address) }.to change(Address, :count).by(1)
   end
 end
