@@ -10,8 +10,8 @@
 #  locality                    :string
 #  administrative_area_level_1 :string
 #  country                     :string
-#  postal_code                 :integer
-#  full_address                :string
+#  postal_code                 :string
+#  full_address                :text
 #  user_id                     :bigint(8)
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
