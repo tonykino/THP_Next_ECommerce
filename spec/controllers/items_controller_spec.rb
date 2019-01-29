@@ -11,9 +11,12 @@ RSpec.describe ItemsController, type: :controller do
   end
 
   describe "GET #show" do
-    before do
+    before(:each) do
+      @item = FactoryBot.create :item
       get :show, params: { id: @item.id }
     end
-    let(:item) { Item.create(name: 'Black tea', description: 'whowh', price: 12) }
+    it "returns http success" do
+      expect(response).to have_http_status(:success)
+    end
   end
 end
