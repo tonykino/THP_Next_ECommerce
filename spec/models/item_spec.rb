@@ -27,8 +27,8 @@ RSpec.describe Item, type: :model do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:price) }
-    it { is_expected.to validate_length_of(:name).is_at_most(20) }
-    it { is_expected.to validate_length_of(:description).is_at_most(150) }
+    it { is_expected.to validate_length_of(:name).is_at_least(2).is_at_most(40) }
+    it { is_expected.to validate_length_of(:description).is_at_least(2).is_at_most(400) }
   end
 
   it 'is creatable' do
