@@ -2,6 +2,7 @@
 
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show]
+
   def index
     @items = Item.all
   end
@@ -10,7 +11,8 @@ class ItemsController < ApplicationController
 
   private
 
-    def set_item
-      @item = Item.find(params[:id])
-    end
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
 end
