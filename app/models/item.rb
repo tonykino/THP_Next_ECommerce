@@ -14,6 +14,6 @@
 
 class Item < ApplicationRecord
   validates :name, :description, :price, presence: true
-  validates :name, length: { maximum: 20 }
-  validates :description, length: { maximum: 150 }
+  validates :name, length: { in: 2..40 }
+  validates :description, length: { in: 2..400 }
 end
