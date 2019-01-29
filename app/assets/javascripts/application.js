@@ -17,3 +17,7 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+//= require assets/js/charts
+//= require assets/js/forms
+//= require assets/js/maps
+//= require assets/js/tables
