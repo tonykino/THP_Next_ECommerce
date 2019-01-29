@@ -7,7 +7,7 @@
       <%= item.description %>
     <% end %>
   </td>
-  <td><%= number_to_currency @item.price, unit: "€", separator: ",", format: "%n%u"  %></td>
+  <td><%= number_to_currency item.price, unit: "€", separator: ",", format: "%n%u"  %></td>
   <td><%= link_to "Infos", administration_item_path(item) %></td>
   <td><%= link_to "Changer",  edit_administration_item_path(item.id) %></td>
   <td><%= link_to "Supprimer", administration_item_path(item),
