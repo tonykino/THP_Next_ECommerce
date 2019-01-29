@@ -1,3 +1,27 @@
-<h3>Liste des items</h3>
+<main class="content">
+  <div class="container-fluid p-0">
+    <h1 class="h3 mb-3"><strong>Liste des items</strong></h1>
+    <%= link_to "Créer un nouvel item", new_administration_item_path %>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th>Nom</th>
+                  <th>Description</th>
+                  <th>Prix</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render @items %>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-<%= render @items %>
+      </div>
+    </div>
+  </div>
+</main>

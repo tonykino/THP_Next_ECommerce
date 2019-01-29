@@ -1,0 +1,23 @@
+<%= link_to "Retour aux produits", administration_items_path %> |
+<%= link_to "Infos du produit", administration_item_path(@item) %> |
+<%= link_to "Supprimer ce produit", administration_item_path(@item),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %> |
+<%= link_to "Voir le produit",  items_path(@item) %>
+
+<%= form_for @item, url: administration_item_url(@item), html: {class: ""} do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price, class: 'form-control' %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
