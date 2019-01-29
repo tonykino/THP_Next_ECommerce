@@ -1,0 +1,16 @@
+<%= link_to "Retour aux produits", administration_items_path %> |
+<%= link_to "Changer ce produit", edit_administration_item_path(@item) %> |
+<%= link_to "Supprimer ce produit", administration_item_path(@item),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %> |
+<%= link_to "Voir le produit",  items_path(@item) %>
+
+<div class="card" style="background-image: white">
+  <div class="card-category">
+    <h1 class="text-center"><%= @item.name %></h1>
+  </div>
+  <div class="card-description">
+    <h2 class="text-center"><%= @item.description %></h2>
+    <p class= "text-right"><%= number_to_currency @item.price, unit: "€", separator: ",", format: "%n%u"  %></p>
+  </div>
+</div>

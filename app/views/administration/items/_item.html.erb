@@ -1,3 +1,17 @@
-<div class="row">
-  <%= item.name %>
-</div>
+<tr>
+  <td><%= item.name %></td>
+  <td>
+    <% if item.description.length > 97  %>
+      <%= item.description.slice(0..100) %>...
+    <% else %>
+      <%= item.description %>
+    <% end %>
+  </td>
+  <td><%= item.price %></td>
+  <td><%= link_to "Infos", administration_item_path(item) %></td>
+  <td><%= link_to "Changer",  edit_administration_item_path(item.id) %></td>
+  <td><%= link_to "Supprimer", administration_item_path(item),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></td>
+</tr>
+
