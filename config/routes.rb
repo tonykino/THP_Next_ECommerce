@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   namespace 'administration' do
     get '/', to: 'static_pages#hello_admin'
+    resources 'items'
   end
 end
