@@ -12,7 +12,7 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "GET #show" do
     before do
-      get :show, params: { id: item.id }
+      get :show, params: { id: @item.id }
     end
     let(:item) { Item.create(name: 'Black tea', description: 'whowh', price: 12) }
   end
