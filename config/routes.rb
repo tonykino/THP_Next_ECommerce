@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   root to: 'items#index'
-  get "items/:id", to: "items#show", as: "item"
+  get "items/:id", to: "items#show", as: "items"
 
   devise_for :users
   root 'static_pages#hello'

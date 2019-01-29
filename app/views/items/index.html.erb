@@ -1,16 +1,19 @@
 
 <div class="container">
+  <% @items.each do |item| %>
   <div class="row">
-    <% @items.each do |item| %>
+
     <div class="col-xs-12 col-sm-4">
       <div class="card" style="background-image: white">
-      <div class="card-category"><h1 class="text-center"> <%= link_to item.name, item_path(item.id) %></h1></div>
-      <h2 class="text-center"><%= item.description %></h2>
-      <p class= "text-right"><%= item.price.round(2) %> €</p>
+        <div class="card-category"><h1 class="text-center"> <%= link_to item.name, items_path(item.id) %></h1></div>
+        <h2 class="text-center"><%= item.description %></h2>
+        <p class= "text-right"> <span><%= number_to_currency item.price, unit: "€", separator: ",", format: "%n%u"  %></span></p>
+      </div>
+
     </div>
-    <% end %>
+
   </div>
-  </div>
+   <% end %>
 </div>
 
 
