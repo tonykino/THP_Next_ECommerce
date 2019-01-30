@@ -15,6 +15,10 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
 
+  validates :status, presence: true
+  validates :total, presence: true,
+                    numericality: true
+
   before_save :update_total
 
   enum status: %i[biding validated treated]
