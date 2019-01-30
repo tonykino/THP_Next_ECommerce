@@ -15,5 +15,13 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
 
+  before_save :update_total
+
   enum status: %i[biding validated treated]
+
+  private
+
+    def update_total
+      self.total = order_items.pluck(:subtotal).sum
+    end
 end
