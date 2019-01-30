@@ -1,0 +1,8 @@
+<H2 class="text-center">Voici votre commande</H2><br>
+<div class="text-center">
+	<% @order.each do |list| %>
+	 <b>Nom de l'objet :</b> <%= list.item.name %><br>
+	 <b>Description de l'objet :</b> <%= list.item.description %><br>
+	 <b>Prix de l'objet :</b> <%= number_to_currency list.item.price, unit: "€", separator: ",", format: "%n%u" %><br><br>
+	<% end %>
+</div>

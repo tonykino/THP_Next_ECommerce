@@ -1,0 +1,7 @@
+<% if @order.count == 0 %>
+<h1 class="text-center">Vous n'avez effectué aucune commande.</h1>
+<% else %>
+<div class="row">
+<%= render @order %>
+</div>
+<% end %>

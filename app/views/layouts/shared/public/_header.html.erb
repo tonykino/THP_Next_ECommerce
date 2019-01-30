@@ -10,6 +10,9 @@
           <%= link_to 'Se déconnecter', destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
         <li class="nav-item">
+          <%= link_to "Mes commandes", orders_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Mon Panier", root_path, class: 'nav-link' %>
         </li>
       </ul>
