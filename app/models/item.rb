@@ -13,6 +13,9 @@
 #
 
 class Item < ApplicationRecord
+  has_many :order_items, dependent: :destroy
+  has_many :orders, through: :order_items
+
   validates :name, :description, :price, presence: true
   validates :name, length: { in: 2..40 }
   validates :description, length: { in: 2..400 }
