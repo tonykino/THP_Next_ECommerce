@@ -16,6 +16,7 @@ class OrderItemsController < ApplicationController
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
     @order_item.update(order_item_params)
+    @order.save
     redirect_back fallback_location: cart_path, notice: "Item updated"
   end
 
