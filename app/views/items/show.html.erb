@@ -6,4 +6,7 @@
     <h2 class="text-center"><%= @item.description %></h2>
     <p class= "text-right"><%= number_to_currency @item.price, unit: "€", separator: ",", format: "%n%u"  %></p>
   </div>
+  <% if current_user %>
+    <%= link_to 'Ajouter au panier', order_items_path(item_id: @item.id), method: :create, class: 'btn btn-primary' %>
+  <% end %>
 </div>

@@ -17,6 +17,8 @@ class OrderItem < ApplicationRecord
   belongs_to :item
   belongs_to :order
 
+  before_validation :update_subtotal
+
   validates :quantity, presence: true,
                        numericality: { only_integer: true, greater_than: 0 }
   validates :subtotal, presence: true,

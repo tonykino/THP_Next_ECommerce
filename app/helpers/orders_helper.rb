@@ -2,10 +2,10 @@
 
 module OrdersHelper
   def current_order
-    if session[:order_id].any?
+    if session[:order_id]
       Order.find(session[:order_id])
     else
-      Order.new
+      Order.create(user_id: current_user.id)
     end
   end
 end

@@ -1,3 +1,16 @@
-<div class="row">
-  <%= render @order_items %>
-</div>
+<h1>Mon panier</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Unit price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @order_items %>
+  </tbody>
+</table>
