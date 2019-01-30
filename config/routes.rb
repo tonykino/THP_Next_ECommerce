@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   root 'items#index'
   resources :items, only: %i[show]
+  resources :order_items, only: %i[create update destroy]
+  resource :cart, only: %i[show]
 
   devise_for :users
 
