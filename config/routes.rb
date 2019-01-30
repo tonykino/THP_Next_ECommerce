@@ -4,14 +4,13 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  root to: 'items#index'
-  get "items/:id", to: "items#show", as: "items"
+  root 'items#index'
+  resources :items, only: %i[show]
 
   devise_for :users
-  root 'static_pages#hello'
 
   namespace 'administration' do
     get '/', to: 'static_pages#hello_admin'
-    resources 'items'
+    resources :items
   end
 end
