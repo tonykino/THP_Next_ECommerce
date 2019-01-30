@@ -25,7 +25,7 @@ class OrderItem < ApplicationRecord
                        numericality: true
 
   after_update :check_qty
-  before_save :update_subtotal
+  before_validation :update_subtotal
 
   private
 
