@@ -9,9 +9,11 @@
 #  status     :integer          default("biding")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint(8)
 #
 
 class Order < ApplicationRecord
+  belongs_to :user
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
 

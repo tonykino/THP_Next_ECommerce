@@ -9,6 +9,7 @@
 #  status     :integer          default("biding")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint(8)
 #
 
 require 'rails_helper'
