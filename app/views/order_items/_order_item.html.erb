@@ -1,6 +1,12 @@
 <tr>
   <th scope='row'><%= order_item.item.name %></th>
   <td><%= order_item.item.price %></td>
-  <td><%= order_item.quantity %></td>
+  <td>
+    <%= form_for order_item do |f| %>
+      <%= f.number_field :quantity %>
+      <%= f.submit 'update' %>
+    <% end %>
+  </td>
   <td><%= order_item.subtotal %></td>
+  <td><%= link_to 'Delete', order_item_path(order_item), method: :delete %></td>
 </tr>
