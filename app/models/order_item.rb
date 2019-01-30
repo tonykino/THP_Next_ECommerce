@@ -21,4 +21,12 @@ class OrderItem < ApplicationRecord
                        numericality: { only_integer: true, greater_than: 0 }
   validates :subtotal, presence: true,
                        numericality: true
+
+  before_save :update_subtotal
+
+  private
+
+    def update_subtotal
+      self.subtotal = quantity * item.price
+    end
 end
