@@ -15,9 +15,9 @@
 
 FactoryBot.define do
   factory :order_item do
-    item { nil }
-    order { nil }
-    quantity { 1 }
-    subtotal { "9.99" }
+    item
+    order
+    quantity { Faker::Number.non_zero_digit }
+    subtotal { Faker::Number.decimal(2, 2) }
   end
 end
