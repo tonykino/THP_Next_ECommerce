@@ -14,8 +14,14 @@
 
 FactoryBot.define do
   factory :item do
-    name { Faker::Lorem.word }
+    name { Faker::Lorem.characters(Random.rand(2..40)) }
     description { Faker::Lorem.sentence }
     price { Faker::Number.decimal(2, 2) }
+
+    trait(:with_orders) do
+      after(:create) do |item|
+        create_list(:order, Random.rand(1..9), items: [item])
+      end
+    end
   end
 end
