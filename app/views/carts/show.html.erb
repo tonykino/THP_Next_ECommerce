@@ -16,6 +16,11 @@
   </tbody>
 </table>
 
-<div class="row">
-  Total : <%= number_to_currency @order.total, unit: '€', separator: ',', format: '%n%u' %>
+<div class="d-flex justify-content-between">
+  <div class="">
+    <h2>Total : <%= number_to_currency @order.total, unit: '€', separator: ',', format: '%n%u' %></h2>
+  </div>
+  <div class="">
+    <%= link_to 'Commander', '#', class: 'btn btn-primary' %>
+  </div>
 </div>
