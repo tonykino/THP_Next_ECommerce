@@ -34,5 +34,6 @@ class ChargesController < ApplicationController
     def validate_order
       validate = Order.find(session[:order_id])
       validate.update(status: "validated")
+      session[:order_id] = nil
     end
 end
