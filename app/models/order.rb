@@ -21,13 +21,11 @@ class Order < ApplicationRecord
   validates :total, presence: true,
                     numericality: true
 
-  before_save :update_total
+  before_validation :update_total
 
   enum status: %i[biding validated treated]
 
-  private
-
-    def update_total
-      self.total = order_items.pluck(:subtotal).sum
-    end
+  def update_total
+    self.total = order_items.pluck(:subtotal).sum
+  end
 end

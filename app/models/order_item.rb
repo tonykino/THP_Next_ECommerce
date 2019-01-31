@@ -18,13 +18,18 @@ class OrderItem < ApplicationRecord
   belongs_to :order
 
   validates :quantity, presence: true,
-                       numericality: { only_integer: true, greater_than: 0 }
+                       numericality: { only_integer: true, greater_than_or_equal: 0 }
   validates :subtotal, presence: true,
                        numericality: true
 
-  before_save :update_subtotal
+  after_update :check_qty
+  before_validation :update_subtotal
 
   private
+
+    def check_qty
+      destroy if quantity.zero?
+    end
 
     def update_subtotal
       self.subtotal = quantity * item.price

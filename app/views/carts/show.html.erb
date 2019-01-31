@@ -1,0 +1,26 @@
+<h1>Mon panier</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Unit price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @order_items %>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between">
+  <div class="">
+    <h2>Total : <%= number_to_currency @order.total, unit: '€', separator: ',', format: '%n%u' %></h2>
+  </div>
+  <div class="">
+    <%= link_to 'Commander', '#', class: 'btn btn-primary' %>
+  </div>
+</div>
