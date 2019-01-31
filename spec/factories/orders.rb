@@ -14,7 +14,14 @@
 
 FactoryBot.define do
   factory :order do
-    total { "9.99" }
-    status { 1 }
+    user
+    total { Faker::Number.decimal(2) }
+    status { Order.statuses.keys.sample }
+
+    trait(:with_items) do
+      after(:create) do |order|
+        create_list(:item, Random.rand(1..9), orders: [order])
+      end
+    end
   end
 end
