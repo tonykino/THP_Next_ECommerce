@@ -21,6 +21,6 @@
     <h2>Total : <%= number_to_currency @order.total, unit: '€', separator: ',', format: '%n%u' %></h2>
   </div>
   <div class="">
-    <%= link_to 'Commander', '#', class: 'btn btn-primary' %>
+    <%= link_to 'Commander', new_charge_path, class: 'btn btn-primary' %>
   </div>
 </div>

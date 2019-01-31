@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :cart, only: %i[show]
   resources :orders, only: %i[index show]
   devise_for :users
+  resources :charges
 
   namespace 'administration' do
     get '/', to: 'static_pages#hello_admin'
