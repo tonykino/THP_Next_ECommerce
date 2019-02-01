@@ -25,5 +25,17 @@ FactoryBot.define do
     password { password_faker }
     password_confirmation { password_faker }
     confirmed_at { Time.zone.now }
+
+    trait(:with_orders) do
+      after(:create) do |user|
+        create_list(:order, Random.rand(1..9), user: user)
+      end
+    end
+
+    trait(:with_addresses) do
+      after(:create) do |user|
+        create_list(:address, Random.rand(1..2), user: user)
+      end
+    end
   end
 end
