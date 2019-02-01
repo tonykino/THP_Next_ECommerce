@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.2.1'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.5.0'
+gem 'dotenv-rails'
 gem 'faker', '~> 1.8', '>= 1.8.7'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -31,7 +32,6 @@ end
 
 group :development do
   gem 'annotate', '~> 2.7', '>= 2.7.4'
-  gem 'dotenv-rails'
   gem 'husky', '~> 0.5.15'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rubocop', '~> 0.63.0', require: false
