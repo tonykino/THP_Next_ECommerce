@@ -1,16 +1,19 @@
 <nav class="sidebar">
 	<div class="sidebar-content">
-		<a class="sidebar-brand" href="index.html">
-<i class="align-middle" data-feather="box"></i>
-<span class="align-middle">Ruby-T</span>
-</a>
+		<%= link_to administration_path, class: 'sidebar-brand' do %>
+			<i class="align-middle" data-feather="box"></i>
+			<span class="align-middle">Ruby-T</span>
+		<% end %>
 
 		<ul class="sidebar-nav">
+			<li class="sidebar-item">
+				<%= link_to "Retour à la boutique", root_path, class: "sidebar-link" %>
+			</li>
 			<li class="sidebar-item">
 				<%= link_to "Liste des articles", administration_items_path, class: "sidebar-link" %>
 			</li>
 			<li class="sidebar-item">
-				<%= link_to "Voir mes commandes", administration_orders_path, class: "sidebar-link" %>
+				<%= link_to "Voir les commandes", administration_orders_path, class: "sidebar-link" %>
 			</li>
 		</ul>
 
@@ -18,9 +21,6 @@
 			<div class="media">
 				<div class="media-body">
 					<h5 class="mb-1 text-white"><%= current_user.email %></h5>
-					<div class="text-light">
-						<i class="fas fa-circle text-success"></i> Online
-					</div>
 				</div>
 			</div>
 		</div>

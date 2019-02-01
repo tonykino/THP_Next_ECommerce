@@ -4,7 +4,7 @@ module Administration
   class OrdersController < AdministrationController
     before_action :set_orders, only: %i[index]
     before_action :set_order, only: %i[show create]
-    before_action :set_order_items, only: %i[create]
+    before_action :set_order_items, only: %i[show]
 
     def index; end
 
