@@ -1,0 +1,12 @@
+<tr>
+  <td><%= order.id %></td>
+  <td><%= order.status %></td>
+  <td><%= order.updated_at %></td>
+  <td><%= number_to_currency order.total, unit: "€", separator: ",", format: "%n%u"  %></td>
+  <td><%= link_to "Détail de la commande", administration_order_path(order) %></td>
+  <% if order.status == "treated" %>
+  <td><div class="btn btn-success">Commande traitée</div></td>
+  <% else %>
+  <td><%= link_to "J'ai traité la commande", administration_orders_path(order_id: order.id), method: :post, data: { confirm: "Êtes-vous sûr ? Vous ne pourrez pas revenir en arrière." }, class: "btn btn-primary"%></td>
+  <% end %>
+</tr>

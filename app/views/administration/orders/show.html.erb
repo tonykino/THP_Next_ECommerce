@@ -1,0 +1,5 @@
+<H2 class="text-center">Voici la commande</H2><br>
+<div class="text-center">
+	<%= render partial: 'orders/order_item', collection: @order_items %>
+	<%= link_to "Retourner à la liste de commandes", administration_orders_path, class: "btn btn-success" %>
+</div>
