@@ -1,0 +1,3 @@
+<b>Nom de l'objet :</b> <%= order_item.item.name %><br>
+<b>Description de l'objet :</b> <%= order_item.item.description %><br>
+<b>Prix de l'objet :</b> <%= number_to_currency order_item.item.price, unit: "€", separator: ",", format: "%n%u" %><br><br>
