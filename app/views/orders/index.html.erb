@@ -1,7 +1,8 @@
-<% if @order.count == 0 %>
-<h1 class="text-center">Vous n'avez effectué aucune commande.</h1>
+<% if @orders.count == 0 %>
+  <h1 class="text-center">Vous n'avez effectué aucune commande.</h1>
 <% else %>
-<div class="row">
-<%= render @order %>
-</div>
+  <h1>Liste des commandes</h1>
+  <div class="row">
+    <%= render @orders %>
+  </div>
 <% end %>

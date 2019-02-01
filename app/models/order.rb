@@ -13,6 +13,9 @@
 #
 
 class Order < ApplicationRecord
+  scope :belonging, ->(user) { where(user_id: user.id) }
+  scope :all_except, ->(status) { where.not(status: status) }
+
   belongs_to :user
   has_many :order_items, dependent: :destroy
   has_many :items, through: :order_items
