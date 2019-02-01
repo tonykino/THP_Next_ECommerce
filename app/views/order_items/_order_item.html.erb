@@ -7,6 +7,6 @@
       <%= f.submit 'update' %>
     <% end %>
   </td>
-  <td><%= order_item.subtotal %></td>
+  <td><%= number_to_currency order_item.subtotal, unit: '€', separator: ',', format: '%n%u' %></td>
   <td><%= link_to 'Delete', order_item_path(order_item), method: :delete %></td>
 </tr>
