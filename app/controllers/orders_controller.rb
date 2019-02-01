@@ -2,7 +2,7 @@
 
 class OrdersController < ApplicationController
   before_action :set_orders_belonging_to_current_user, only: %i[index]
-  before_action :set_order_items_belonging_to_order, only: %i[show]
+  before_action :order_content, only: %i[show]
 
   def index; end
 
@@ -14,7 +14,8 @@ class OrdersController < ApplicationController
       @orders = Order.belonging(current_user).all_except('biding')
     end
 
-    def set_order_items_belonging_to_order
-      @order_items = Order.find(params[:id]).order_items
+    def order_content
+      @order = Order.find(params[:id])
+      @order_items = @order.order_items
     end
 end

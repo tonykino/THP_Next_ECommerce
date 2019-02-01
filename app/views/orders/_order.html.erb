@@ -1,8 +1,7 @@
-
-  <tr>
-    <td><%= order.id %></td>
-    <td><%= order.created_at %></td>
-    <td><%= number_to_currency order.total, unit: "€", separator: ",", format: "%n%u" %></td>
-    <td><%= order.status %></td>
-    <td><%= link_to "Détails de ma commande", order_path(order) %></td>
-  </tr>
+<tr>
+  <td><%= order.id %></td>
+  <td><%= order.created_at %></td>
+  <td><%= number_to_currency order.total, unit: "€", separator: ",", delimiter: " ", format: "%n%u" %></td>
+  <td><%= order.status %></td>
+  <td><%= link_to "Détails de ma commande", order_path(order) %></td>
+</tr>
