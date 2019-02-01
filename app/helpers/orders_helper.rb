@@ -5,7 +5,9 @@ module OrdersHelper
     if session[:order_id]
       Order.find(session[:order_id])
     else
-      Order.create(user_id: current_user.id)
+      order = Order.create(user_id: current_user.id)
+      session[:order_id] = order.id
+      order
     end
   end
 end
