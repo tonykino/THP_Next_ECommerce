@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :charges
 
   namespace 'administration' do
-    get '/', to: 'static_pages#hello_admin'
+    get '/', to: 'items#index'
     resources :items
     resources :orders, only: %i[index show create]
   end
