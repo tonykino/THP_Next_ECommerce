@@ -3,7 +3,7 @@
 <%= link_to "Supprimer ce produit", administration_item_path(@item),
       method: :delete,
       data: { confirm: "Are you sure?" } %> |
-<%= link_to "Voir le produit",  items_path(@item) %>
+<%= link_to "Voir le produit",  item_path(@item) %>
 
 <%= form_for @item, url: administration_item_url(@item), html: {class: ""} do |f| %>
   <div class="form-group">
@@ -20,4 +20,3 @@
   </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
-
