@@ -9,7 +9,6 @@ class OrderItemsController < ApplicationController
                                     item_id: params[:item_id],
                                     quantity: 1)
     @order.save
-    session[:order_id] = @order.id
     redirect_to cart_path, notice: "Item added"
   end
 
