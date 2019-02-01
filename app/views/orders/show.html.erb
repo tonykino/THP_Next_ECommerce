@@ -1,4 +1,28 @@
-<H2 class="text-center">Voici votre commande</H2><br>
-<div class="text-center">
-	<%= render partial: 'orders/order_item', collection: @order_items %>
+<H2 class="display-4">Détail de votre commande</H2><br>
+
+<div class="lead">
+	<div>Numéro de commande : <%= @order.id %></div>
+	<div>Date : <%= @order.created_at %></div>
+</div>
+
+<br />
+
+<div class="table-responsive">
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Nom de l'article</th>
+				<th>Prix unitaire</th>
+				<th>Quantité</th>
+				<th>Sous total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render partial: 'orders/order_item', collection: @order_items %>
+		</tbody>
+	</table>
+</div>
+
+<div class="lead">
+	<div>Montant total de votre commande : <%= number_to_currency @order.total, unit: "€", separator: ",", delimiter: " ", format: "%n%u" %></div>
 </div>
