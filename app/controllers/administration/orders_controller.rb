@@ -7,8 +7,8 @@ module Administration
     end
 
     def show
-      @orders = Order.find(params[:id])
-      @order_items = @orders.order_items
+      @order = Order.find(params[:id])
+      @order_items = @order.order_items
     end
 
     def update
@@ -18,7 +18,7 @@ module Administration
     def create
       @orders = Order.find(params[:order_id])
       @orders.update(status: "treated")
-      redirect_to administration_orders_path, notice: "Vous avez bien validé votre commande"
+      redirect_back fallback_location: administration_orders_path, notice: "Vous avez bien validé votre commande"
     end
   end
 end

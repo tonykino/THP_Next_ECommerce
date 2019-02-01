@@ -1,5 +1,41 @@
-<H2 class="text-center">Voici la commande</H2><br>
-<div class="text-center">
-	<%= render partial: 'orders/order_item', collection: @order_items %>
-	<%= link_to "Retourner à la liste de commandes", administration_orders_path, class: "btn btn-success" %>
+<div class="display-4">Détail de la commande</div>
+
+<div class="lead">
+	<div class="d-flex justify-content-between">
+		<div>Numéro de commande : <%= @order.id %></div>
+		<div>
+			Statut :
+			<% if @order.status == "treated" %>
+		  	<div class="btn btn-success">La commande est traitée</div>
+		  <% else %>
+		  	<%= link_to "Commande à traiter", administration_orders_path(order_id: @order.id), method: :post, data: { confirm: "Êtes-vous sûr ? Vous ne pourrez pas revenir en arrière." }, class: "btn btn-warning"%>
+		  <% end %>
+		</div>
+	</div>
+
+	<div>Date : <%= @order.created_at %></div>
 </div>
+
+<br />
+
+<div class="table-responsive">
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Nom de l'article</th>
+				<th>Prix unitaire</th>
+				<th>Quantité</th>
+				<th>Sous total</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%= render partial: 'orders/order_item', collection: @order_items %>
+		</tbody>
+	</table>
+</div>
+
+<div class="lead">
+	<div>Montant total de cette commande : <%= number_to_currency @order.total, unit: "€", separator: ",", delimiter: " ", format: "%n%u" %></div>
+</div>
+
+<%= link_to "Retourner à la liste de commandes", administration_orders_path, class: "btn btn-success" %>
