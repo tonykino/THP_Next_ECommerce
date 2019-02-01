@@ -1,3 +1,5 @@
+<%= link_to "Retourner à la liste de commandes", administration_orders_path, class: "btn btn-link" %>
+
 <div class="display-4">Détail de la commande</div>
 
 <div class="lead">
@@ -6,9 +8,9 @@
 		<div>
 			Statut :
 			<% if @order.status == "treated" %>
-		  	<div class="btn btn-success">La commande est traitée</div>
+		  	<div class="btn btn-success">Traitée</div>
 		  <% else %>
-		  	<%= link_to "Commande à traiter", administration_orders_path(order_id: @order.id), method: :post, data: { confirm: "Êtes-vous sûr ? Vous ne pourrez pas revenir en arrière." }, class: "btn btn-warning"%>
+				<div class="btn btn-warning">En attente de traitement</div>
 		  <% end %>
 		</div>
 	</div>
@@ -38,4 +40,8 @@
 	<div>Montant total de cette commande : <%= number_to_currency @order.total, unit: "€", separator: ",", delimiter: " ", format: "%n%u" %></div>
 </div>
 
-<%= link_to "Retourner à la liste de commandes", administration_orders_path, class: "btn btn-success" %>
+<% if @order.status == "validated" %>
+	<div class="d-flex justify-content-center">
+		<%= link_to "Passer la commande en 'traitée'", administration_orders_path(id: @order.id), method: :post, data: { confirm: "Êtes-vous sûr ? Vous ne pourrez pas revenir en arrière." }, class: "btn btn-warning btn-lg"%>
+	</div>
+<% end %>
