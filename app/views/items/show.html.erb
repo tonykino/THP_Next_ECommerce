@@ -1,19 +1,37 @@
-<div class="card" style="background-image: white">
-  <div class="card-category">
-    <h1 class="text-center"><%= @item.name %></h1>
+<div class="container container-show">
+  <div class="row">
+    <div class="col-xs-12 col-lg-6">
+      <div class="card-image">
+       <% if @item.image.attached? %>
+       <%= image_tag @item.image.variant(resize: "400x400") %>
+       <% else %>
+       <%= image_tag("no-image.png", size: "400") %>
+       <% end %>
+     </div>
+   </div>
+   <div class="col-xs-12 col-lg-6">
+    <h1 class="text-center title-show"><%= @item.name %></h1>
+
+    <div class="card card-white" style="background-image: white">
+      <div class="review"><i class="fas fa-star" style ="color:#0cc2aa"></i><i class="fas fa-star" style ="color:#0cc2aa"></i><i class="fas fa-star" style ="color:#0cc2aa"></i><i class="fas fa-star" style ="color:#0cc2aa"></i><i class="fas fa-star" style ="color:#0cc2aa"></i> </div>
+      <div class="card-price">
+        <p><%= number_to_currency @item.price, unit: "€", separator: ",", format: "%n%u"  %></p>
+
+      </div>
+
+      <% if current_user %>
+        <%= link_to 'AJOUTER AU PANIER', order_items_path(item_id: @item.id), method: :create, class: 'btn btn-primary' %>
+      <% end %>
+      <div class="card-description">
+        <p class= "little-title">Détails</p>
+        <p class="text-justify"><%= @item.description %></p>
+
+      </div>
+    </div>
   </div>
-  <div class="card-description">
-    <h2 class="text-center"><%= @item.description %></h2>
-    <p class= "text-right"><%= number_to_currency @item.price, unit: "€", separator: ",", format: "%n%u"  %></p>
-  </div>
-  <div class="text-center">
-    <% if @item.image.attached? %>
-    <%= image_tag @item.image.variant(resize: "400x400") %>
-    <% else %>
-    <%= image_tag("no-image.png", size: "400") %>
-    <% end %>
-  </div>
-  <% if current_user %>
-    <%= link_to 'Ajouter au panier', order_items_path(item_id: @item.id), method: :create, class: 'btn btn-primary' %>
-  <% end %>
 </div>
+</div>
+
+
+
+
