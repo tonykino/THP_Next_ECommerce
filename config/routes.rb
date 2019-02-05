@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :order_items, only: %i[create update destroy]
   resource :cart, only: %i[show]
   resources :orders, only: %i[index show]
-  devise_for :users
+
+  devise_for :users, path: 'users', controllers: { registrations: 'users/registrations' }
+
   resources :charges
 
   namespace 'administration' do

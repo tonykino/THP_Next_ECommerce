@@ -1,0 +1,30 @@
+
+<% if @user.orders.count == 0 %>
+  <h1 class="text-center">Vous n'avez effectué aucune commande.</h1>
+<% else %>
+  <p>Aperçu de vos commandes</p>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Numéro de commande</th>
+          <th>Date</th>
+          <th>Montant</th>
+          <th>Statut</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.orders.all_except('biding').each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= order.created_at %></td>
+            <td><%= number_to_currency order.total, unit: "€", separator: ",", delimiter: " ", format: "%n%u" %></td>
+            <td><%= order.status %></td>
+            <td><%= link_to "Détails de ma commande", order_path(order) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

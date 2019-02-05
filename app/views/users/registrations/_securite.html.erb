@@ -1,0 +1,47 @@
+<div class="container container-infos">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<!-- Account info -->
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      Attention, votre adresse email n'a pas été confirmé.<br />
+      Cliquez <%= link_to "ici", new_confirmation_path(resource_name) %> pour recevoir à nouveau le mail de confirmation.<br />
+    <% end %>
+    <form>
+
+      <p class= "text-center">Vous pouvez mettre à jour votre email ci dessous (votre mot de passe sera nécessaire) :</p>
+
+      <div class="row">
+        <div class="col">
+          <%= f.email_field :email, placeholder: "Votre nouvel email", class: "form-control form-control-lg" %>
+        </div>
+      </div>
+      <div class="change-mdp">
+        <p class= "text-center"><strong>Changer votre mot de passe</strong></p>
+      </div>
+  <!-- Change password -->
+      <div class="row">
+        <div class="col">
+          <%= f.label :current_password, 'Mot de passe actuel'%>
+          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control form-control-lg" %>
+        </div>
+        <div class="col">
+          <%= f.label :password, 'Nouveau mot de passe' %>
+          <%= f.password_field :password, class: "form-control form-control-lg"%>
+        </div>
+        <div class="col">
+          <%= f.label :password_confirmation, 'Confirmer le mot de passe' %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg" %>
+        </div>
+      </div>
+      <div class="bouton space-btn">
+        <%= f.submit "Mettre à jour mon compte", class: "btn-blue w-100" %>
+      </div>
+    </form>
+  <% end %>
+  <div class="change-mdp">
+    <p class= "text-center"><strong> Supprimer mon compte</strong></p>
+  </div>
+  <p class="text-center">Attention, cette action est irréversible</p>
+  <div class="bouton space-btn">
+    <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr?" }, method: :delete, class: "btn-blue w-100" %>
+  </div>
+</div>
