@@ -25,6 +25,18 @@ class OrderItem < ApplicationRecord
   after_update :check_qty
   before_validation :update_subtotal
 
+  def self.add_item_to_cart(order, item_id)
+    item = Item.find(item_id)
+    if order.items.include?(item)
+      order_item = order.order_items.find_by(item: item)
+      order_item.update(quantity: order_item.quantity + 1)
+    else
+      OrderItem.create!(order_id: order.id,
+                        item_id: item_id,
+                        quantity: 1)
+    end
+  end
+
   private
 
     def check_qty
