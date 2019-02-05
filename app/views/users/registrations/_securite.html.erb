@@ -21,22 +21,19 @@
 
   <div class="row">
     <div class="col">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.label :password %>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
-    <% if @minimum_password_length %>
-    <br />
-    <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+
   <div class="col">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   <div class="col">
-  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
 </div>
 </form>
 <div class="bouton space-btn">
