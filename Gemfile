@@ -22,6 +22,7 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'stripe'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'image_processing', '~> 1.2'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
