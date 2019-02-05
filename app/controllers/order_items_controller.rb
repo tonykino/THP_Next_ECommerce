@@ -3,24 +3,20 @@
 class OrderItemsController < ApplicationController
   before_action :set_current_order
   before_action :set_order_item, only: %i[update destroy]
+  after_action :save_order
 
   def create
-    @order_item = OrderItem.create!(order_id: @order.id,
-                                    item_id: params[:item_id],
-                                    quantity: 1)
-    @order.save
+    OrderItem.add_item_to_cart(@order, params[:item_id])
     redirect_to cart_path, notice: "Item added"
   end
 
   def update
     @order_item.update(order_item_params)
-    @order.save
     redirect_back fallback_location: cart_path, notice: "Item updated"
   end
 
   def destroy
     @order_item.destroy
-    @order.save
     redirect_back fallback_location: cart_path, alert: "Item removed from cart"
   end
 
@@ -36,5 +32,9 @@ class OrderItemsController < ApplicationController
 
     def set_order_item
       @order_item = @order.order_items.find(params[:id])
+    end
+
+    def save_order
+      @order.save
     end
 end
