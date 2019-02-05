@@ -28,11 +28,3 @@ User.create!(
     price: Faker::Number.decimal(2)
   )
 end
-
-200.times do
-  Order.create!(
-    user_id: User.first.id,
-    status: Order.statuses.keys.sample,
-    total: Faker::Number.decimal(2)
-  )
-end
