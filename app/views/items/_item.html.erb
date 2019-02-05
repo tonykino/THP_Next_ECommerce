@@ -5,7 +5,13 @@
         <%= link_to item.name, item_path(item) %>
       </h1>
     </div>
-    <div class="text-center"> <%= link_to image_tag(item.image.variant(resize: "250x250")), item_path(item) if item.image.attached? %></div>
+    <div class="text-center">
+      <% if item.image.attached? %>
+      <%= link_to image_tag(item.image.variant(resize: "250x250")), item_path(item) %>
+      <% else %>
+      <%= link_to image_tag("no-image.png", size: "250"), item_path(item) %>
+      <% end %>
+    </div>
     <p class="text-center"><%= item.description %></p>
     <p class= "text-right"><span><%= number_to_currency item.price, unit: "€", separator: ",", format: "%n%u"  %></span></p>
   </div>
