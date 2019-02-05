@@ -7,7 +7,11 @@
     <p class= "text-right"><%= number_to_currency @item.price, unit: "€", separator: ",", format: "%n%u"  %></p>
   </div>
   <div class="text-center">
+    <% if @item.image.attached? %>
     <%= image_tag @item.image.variant(resize: "400x400") %>
+    <% else %>
+    <%= image_tag("no-image.png", size: "400") %>
+    <% end %>
   </div>
   <% if current_user %>
     <%= link_to 'Ajouter au panier', order_items_path(item_id: @item.id), method: :create, class: 'btn btn-primary' %>
