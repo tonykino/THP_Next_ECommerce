@@ -9,7 +9,7 @@
       <% if item.image.attached? %>
       <%= link_to image_tag(item.image.variant(resize: "250x250")), item_path(item) %>
       <% else %>
-      <%= link_to image_tag("no-image.png", size: "250"), item_path(item) %>
+      <%= link_to image_tag("no-image.png", size: "240"), item_path(item) %>
       <% end %>
     </div>
     <p class="text-center"><%= item.description %></p>
