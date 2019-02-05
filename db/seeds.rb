@@ -21,10 +21,18 @@ User.create!(
   confirmed_at: Time.zone.now,
 )
 
-30.times do
+200.times do
   Item.create!(
     name: Faker::Food.fruits,
     description: Faker::Food.description,
     price: Faker::Number.decimal(2)
+  )
+end
+
+200.times do
+  Order.create!(
+    user_id: User.first.id,
+    status: Order.statuses.keys.sample,
+    total: Faker::Number.decimal(2)
   )
 end
