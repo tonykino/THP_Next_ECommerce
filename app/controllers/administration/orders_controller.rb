@@ -18,7 +18,7 @@ module Administration
     private
 
       def set_orders
-        @orders = Order.all_except('biding').order(:status)
+        @orders = Order.all_except('biding').order(:status).paginate(page: params[:page])
       end
 
       def set_order

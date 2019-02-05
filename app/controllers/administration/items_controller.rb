@@ -4,7 +4,7 @@ module Administration
   class ItemsController < AdministrationController
     before_action :set_item, only: %i[edit show update destroy]
     def index
-      @items = Item.all.order(:price)
+      @items = Item.paginate(page: params[:page])
     end
 
     def show; end

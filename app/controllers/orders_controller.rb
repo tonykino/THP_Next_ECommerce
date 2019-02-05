@@ -11,7 +11,8 @@ class OrdersController < ApplicationController
   private
 
     def set_orders_belonging_to_current_user
-      @orders = Order.belonging(current_user).all_except('biding')
+      @orders = Order.belonging(current_user).all_except('biding').
+                paginate(page: params[:page]).order('created_at DESC')
     end
 
     def order_content
