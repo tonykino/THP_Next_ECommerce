@@ -58,8 +58,7 @@ module Users
       end
 
       def update_resource(resource, params)
-        if params[:password].blank? && params[:password_confirmation].blank? && params[:email] == resource.email
-          params.delete(:current_password)
+        if params[:current_password].nil?
           resource.update_without_password(params)
         else
           resource.update_with_password(params)
