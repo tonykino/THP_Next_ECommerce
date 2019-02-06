@@ -7,6 +7,7 @@ class ChargesController < ApplicationController
   end
 
   def create
+    @user = current_user
     # Amount in cents
     @order = current_order
     @amount = @order.total.to_i * 100
@@ -24,6 +25,7 @@ class ChargesController < ApplicationController
     )
 
     validate_order
+    send_mail
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
@@ -35,5 +37,10 @@ class ChargesController < ApplicationController
       validate = Order.find(session[:order_id])
       validate.update(status: "validated")
       session[:order_id] = nil
+    end
+
+    def send_mail
+      OrderMailer.with(user: @user).customer_email.deliver_later
+      OrderMailer.admin_order_email.deliver_later
     end
 end
