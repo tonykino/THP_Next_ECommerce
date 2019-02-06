@@ -7,7 +7,6 @@ class ChargesController < ApplicationController
   end
 
   def create
-    @user = current_user
     # Amount in cents
     @order = current_order
     @amount = @order.total.to_i * 100
@@ -39,8 +38,8 @@ class ChargesController < ApplicationController
       session[:order_id] = nil
     end
 
-    def send_mail(_order)
-      OrderMailer.with(user: @user, order: @order).customer_email.deliver_later
-      OrderMailer.with(order: @order).admin_order_email.deliver_later
+    def send_mail(order)
+      OrderMailer.with(user: current_user, order: order).customer_email.deliver_later
+      OrderMailer.with(order: order).admin_order_email.deliver_later
     end
 end
