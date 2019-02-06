@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 File.read('./.ruby-version')
 
+gem "aws-sdk-s3", require: false
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.2.1'
 gem 'coffee-rails', '~> 4.2'
@@ -14,6 +15,7 @@ gem 'faker', '~> 1.8', '>= 1.8.7'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'mini_magick', '~> 4.8'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.2'
@@ -23,6 +25,8 @@ gem 'sidekiq-failures', '~> 1.0'
 gem 'stripe'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate', '~>3.1.6'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'

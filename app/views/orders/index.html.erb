@@ -20,4 +20,6 @@
       </tbody>
     </table>
   </div>
+  <%= will_paginate @orders, renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
+                            list_classes: %w(pagination justify-content-center) %>
 <% end %>

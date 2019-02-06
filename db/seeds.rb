@@ -21,7 +21,7 @@ User.create!(
   confirmed_at: Time.zone.now,
 )
 
-30.times do
+200.times do
   Item.create!(
     name: Faker::Food.fruits,
     description: Faker::Food.description,
