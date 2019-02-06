@@ -21,16 +21,16 @@
 
     <div class="row">
       <div class="col">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.label :current_password, 'Mot de passe actuel :' %>
+        <%= f.password_field :current_password, placeholder: "Mot de passe" %>
       </div>
       <div class="col">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.label :password, 'Nouveau mot de passe :' %>
+        <%= f.password_field :password, placeholder: "Mot de passe" %>
       </div>
       <div class="col">
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
+        <%= f.label :password_confirmation, 'Confirmer votre nouveau mot de passe :' %><br />
+        <%= f.password_field :password_confirmation, placeholder: "Mot de passe" %>
       </div>
     </div>
     <div class="bouton space-btn">
