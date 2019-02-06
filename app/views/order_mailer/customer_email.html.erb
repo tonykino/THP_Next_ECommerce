@@ -4,6 +4,22 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Mailer client</h1>
+    <h2>Merci pour votre achat, voici le récapitulatif de votre commande</h2>
+    <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom de l'article</th>
+          <th>Prix unitaire</th>
+          <th>Quantité</th>
+         <th>Sous total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'order_mailer/order_item', collection: @order %>
+      </tbody>
+    </table>
+    </div>
+    <p>Pour un total de : <%= number_to_currency @total, unit: "€", separator: ",", delimiter: " ", format: "%n%u" %></p>
   </body>
 </html>

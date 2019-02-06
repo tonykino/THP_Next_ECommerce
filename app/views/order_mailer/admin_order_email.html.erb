@@ -4,6 +4,24 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  	<h1>Mailer admin</h1>
+  	<h2>Vous avez une nouvelle commande.</h2>
+    <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom de l'article</th>
+          <th>Prix unitaire</th>
+          <th>Quantité</th>
+         <th>Sous total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render partial: 'order_mailer/order_item', collection: @order %>
+      </tbody>
+    </table>
+    </div>
+    <p>Pour un total de : <%= number_to_currency @total, unit: "€", separator: ",", delimiter: " ", format: "%n%u" %></p>
+    <p>Visitez votre dashboard pour voir votre commande.</p>
+    <%= link_to "dashboard administrateur", administration_orders_url %>
   </body>
 </html>
