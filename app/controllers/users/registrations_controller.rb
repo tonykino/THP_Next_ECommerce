@@ -66,7 +66,8 @@ module Users
       end
 
       def set_orders
-        @orders = current_user.orders.all_except('biding')
+        @orders = current_user.orders.all_except('biding').
+                  paginate(page: params[:page]).order('created_at DESC')
       end
 
     # The path used after sign up.
