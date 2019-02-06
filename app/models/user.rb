@@ -29,9 +29,6 @@ class User < ApplicationRecord
   has_many :addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
 
-  validates :email, :password, presence: true
-  validates :password, length: { minimum: 6 }
-
   protected
 
     def send_devise_notification(notification, *args)

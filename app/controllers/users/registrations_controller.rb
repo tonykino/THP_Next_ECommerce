@@ -25,7 +25,6 @@ module Users
     # PUT /resource
     def update
       super
-      @user.profile.save!
     end
 
     # DELETE /resource
