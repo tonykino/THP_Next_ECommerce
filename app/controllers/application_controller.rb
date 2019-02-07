@@ -2,4 +2,5 @@
 
 class ApplicationController < ActionController::Base
   include OrdersHelper
+  include Pundit
 end
