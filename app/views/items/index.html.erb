@@ -1,5 +1,8 @@
-<div class="row">
-  <%= render @items %>
+<div class="container-fluid">
+  <div class="card-deck">
+    <%= render @items %>
+  </div>
 </div>
+​
 <%= will_paginate @items, renderer: WillPaginate::ActionView::BootstrapLinkRenderer,
-                          list_classes: %w(pagination justify-content-center) %>
+             list_classes: %w(pagination justify-content-center) %>
