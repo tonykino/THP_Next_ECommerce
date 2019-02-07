@@ -2,15 +2,15 @@
 
 class ChargesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_current_order
+  before_action :set_order_items, only: %i[new]
+  before_action :authorize_user
 
-  def new
-    @order = current_order
-    @order_items = @order.order_items
-  end
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized_error
+
+  def new; end
 
   def create
-    # Amount in cents
-    @order = current_order
     @amount = @order.total.to_i * 100
 
     customer = Stripe::Customer.create(
@@ -33,6 +33,23 @@ class ChargesController < ApplicationController
   end
 
   private
+
+    def set_current_order
+      @order = current_order
+    end
+
+    def set_order_items
+      @order_items = @order.order_items
+    end
+
+    def authorize_user
+      authorize @order, policy_class: ChargePolicy
+    end
+
+    def not_authorized_error
+      flash[:alert] = 'Ce panier est vide ou il ne vous appartient pas'
+      redirect_back fallback_location: cart_path
+    end
 
     def validate_order
       validate = Order.find(session[:order_id])

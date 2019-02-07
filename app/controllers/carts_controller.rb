@@ -3,6 +3,7 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :cart_content
+  before_action :authorize_user
 
   def show; end
 
@@ -11,5 +12,9 @@ class CartsController < ApplicationController
     def cart_content
       @order = current_order
       @order_items = @order.order_items
+    end
+
+    def authorize_user
+      authorize @order
     end
 end
