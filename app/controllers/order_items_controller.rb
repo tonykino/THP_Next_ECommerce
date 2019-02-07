@@ -3,6 +3,7 @@
 class OrderItemsController < ApplicationController
   before_action :set_current_order
   before_action :set_order_item, only: %i[update destroy]
+  before_action :authorize_user
   after_action :save_order
 
   def create
@@ -32,6 +33,10 @@ class OrderItemsController < ApplicationController
 
     def set_order_item
       @order_item = @order.order_items.find(params[:id])
+    end
+
+    def authorize_user
+      authorize @order
     end
 
     def save_order
