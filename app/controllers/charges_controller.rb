@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @order = current_order
     @order_items = @order.order_items

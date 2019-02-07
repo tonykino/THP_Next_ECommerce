@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class OrderItemsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_current_order
   before_action :set_order_item, only: %i[update destroy]
   after_action :save_order
