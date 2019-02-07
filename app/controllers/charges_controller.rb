@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_current_order
   before_action :set_order_items, only: %i[new]
   before_action :authorize_user

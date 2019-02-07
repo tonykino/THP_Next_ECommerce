@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_orders_belonging_to_current_user, only: %i[index]
   before_action :set_order_content, only: %i[show]
   before_action :authorize_user, only: %i[show]

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   before_action :cart_content
   before_action :authorize_user
 
