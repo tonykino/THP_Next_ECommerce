@@ -1,18 +1,19 @@
-<div class="col-xs-12 col-md-6 col-lg-4">
-  <div class="card" style="background-image: white">
-    <div class="card-category">
-      <h1 class="text-center">
-        <%= link_to item.name, item_path(item) %>
-      </h1>
+<div class="col-xs-12 col-md-6 col-lg-4 mt-4 mb-4">
+  <div class="card border border-primary" style="width: 17rem;">
+    <div class="card-block">
+      <div class="card-img-top text-center">
+        <% if item.image.attached? %>
+        <%= link_to image_tag(item.image.variant(resize: "268x268")), item_path(item) %>
+        <% else %>
+        <%= link_to image_tag("no-image.png", size: "268"), item_path(item) %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to item.name, item_path(item) %></h5>
+      
+        <%= link_to "Voir le produit", item_path(item), class: "btn btn-primary" %><p class= "text-right">
+        <b><%= number_to_currency item.price, unit: "€", separator: ",", format: "%n%u" %></b>
+      </div>
     </div>
-    <div class="text-center">
-      <% if item.image.attached? %>
-      <%= link_to image_tag(item.image.variant(resize: "250x250")), item_path(item) %>
-      <% else %>
-      <%= link_to image_tag("no-image.png", size: "240"), item_path(item) %>
-      <% end %>
-    </div>
-    <p class="text-center"><%= item.description %></p>
-    <p class= "text-right"><span><%= number_to_currency item.price, unit: "€", separator: ",", format: "%n%u"  %></span></p>
   </div>
 </div>
