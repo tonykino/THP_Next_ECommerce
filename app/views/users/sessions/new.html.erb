@@ -1,26 +1,50 @@
-<h2>Log in</h2>
+<main class="main h-100 w-100">
+  <div class="container h-100">
+    <div class="row h-100">
+      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+        <div class="d-table-cell align-middle">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="text-center mt-4">
+            <p class="lead">
+              Connectez-vous pour continuer
+            </p>
+          </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="card">
+            <div class="card-body">
+              <div class="m-sm-4">
+                <form>
+                    <div class="form-group">
+                      <%= f.label :email %><br />
+                      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg" %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :password %><br />
+                      <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg" %>
+                    <small>
+                      <%= link_to "Mot de passe oublié ?", new_user_password_path %>
+                    </small>
+                  </div>
+                    <% if devise_mapping.rememberable? -%>
+                      <div class="custom-control custom-checkbox align-items-center">
+                        <%= f.check_box :remember_me, class: "custom-control-input" %>
+                        <%= f.label :remember_me, class: "custom-control-label text-small" %>
+                      </div>
+                    <% end -%>
+                    <small>
+                    <%= link_to "Vous n'avez pas reçu le mail de confirmation ?", new_user_confirmation_path %><br>
+                    <%= link_to "Vous n'avez pas de compte ?", new_user_registration_path %>
+                    </small>
+                  <div class="text-center mt-3">
+                    <%= f.submit "Se connecter", class: "btn btn-lg btn-primary" %>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</main>
