@@ -1,0 +1,29 @@
+.body{
+	overflow: hidden;
+}
+
+.background-the{
+	background: asset-url(productwallthe) 0 0 repeat;
+	height:300%;
+	width:100%;
+	background-size:auto 1638px;
+	animation: slide 48s linear infinite;
+	z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+}
+@keyframes slide {
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(0, -1638px, 0);
+  }
+}
+row.h-100.mt-5.pt-5{
+	position: fixed;
+}
